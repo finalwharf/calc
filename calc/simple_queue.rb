@@ -56,6 +56,12 @@ class SimpleQueue
   end
 
   def raise_if_empty
-    raise Exception.new "Queue is empty" if store.empty?
+    raise EmptyQueueError if @store.empty?
+  end
+end
+
+class EmptyQueueError < StandardError
+  def message
+    'Queue is empty'
   end
 end

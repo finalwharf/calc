@@ -37,6 +37,11 @@ class TestSimpleQueue < Test::Unit::TestCase
     assert(@queue.empty?)
   end
 
+  def test_exception_handling
+    assert_raises(EmptyQueueError){ @queue.element }
+    assert_raises(EmptyQueueError){ @queue.remove }
+  end
+
   def test_to_a
     array = [1, 2, 3];
     array.each { |e| @queue.add(e) }
